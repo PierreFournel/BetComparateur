@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Prono
 {
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ticket")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ticket;
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -69,6 +74,11 @@ class Prono
      * @ORM\Column(name="isWon", type="boolean")
      */
     private $isWon;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
 
     /**
